@@ -118,9 +118,6 @@ selected_table = st.sidebar.selectbox("Choose a table to visualize:", table_opti
 if selected_table == "Table 1: Total Graduands":
     st.subheader("Total Graduands")
     
-    total_graduands = total_graduands.set_index('Class')
-    total_graduands.drop(columns=['Total'], inplace=True)
-    
     st.write("This table shows the total number of graduands for each program in the MSC")
     # Visualization of total graduands
     st.line_chart(total_graduands, use_container_width=True)
