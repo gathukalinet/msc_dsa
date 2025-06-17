@@ -75,7 +75,7 @@ grads_2025_gender = grads_2025_gender.iloc[:4, :3]
 
 msc_dsa_grad_list = df7
 msc_dsa_grad_list = msc_dsa_grad_list.loc[:, ~msc_dsa_grad_list.columns.duplicated()]
-msc_dsa_grad_list.set_index('S/No.', inplace=True)
+
 
 pending_students_2023 = df8
 pending_students_2023 = pending_students_2023.iloc[:4, :5]
@@ -83,10 +83,10 @@ pending_students_2023 = pending_students_2023.iloc[:4, :5]
 df9.columns = df9.iloc[0, :].values
 df9 = df9.iloc[1:]
 msc_dsa_pending_current = df9
-msc_dsa_pending_current.set_index('S/No.', inplace=True)
+
 
 backlog_2024 = df10
-backlog_2024.set_index('S/No.', inplace=True)
+
 
 # Correcting df11 headers
 df11 = df11.loc[:, ~df11.columns.duplicated()]
