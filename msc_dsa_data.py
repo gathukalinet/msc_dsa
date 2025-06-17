@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import requests
 from io import BytesIO
+import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="MSC DSA Graduation Visualization", layout="wide")
 
@@ -121,9 +122,23 @@ if selected_table == "Table 1: Total Graduands":
     
     st.write("This table shows the total number of graduands for each program in the MSC")
     # Visualization of total graduands
-    st.line_chart(data=total_graduands, x=total_graduands.columns, y=total_graduands.index, use_container_width=True)
+    st.subheader("Line Plot")
 
-elif selected_table == "Table 2: Intake by Gender (2023)":
+fig, ax = plt.subplots(figsize=(12, 6))
+
+for column in total_graduands.columns:
+    ax.plot(total_graduands.index, total_graduands[column], marker='o', label=column)
+
+ax.set_title("Graduands by Class")
+ax.set_xlabel("Year")
+ax.set_ylabel("Number of Students")
+ax.grid(True)
+ax.legend()
+plt.xticks(rotation=45)
+
+st.pyplot(fig)
+
+if selected_table == "Table 2: Intake by Gender (2023)":
     st.subheader("Intake by Gender (2023)")
     st.bar_chart(int)
     st.write(intake_gender_2023)
