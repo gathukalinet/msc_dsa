@@ -48,7 +48,7 @@ total_graduands = total_graduands.loc[:, ~total_graduands.columns.duplicated()]
 total_graduands = total_graduands.replace('-', 0)
 total_graduands.iloc[:, 1:] = total_graduands.iloc[:, 1:].apply(pd.to_numeric)
 total_graduands = total_graduands.set_index('Class')
-total_graduands
+
 
 intake_gender_2023 = df2
 intake_gender_2023 = intake_gender_2023.iloc[:4, :3]
@@ -151,8 +151,37 @@ if selected_table == "Table 1: Total Graduands":
 
 elif selected_table == "Table 2: Intake by Gender (2023)":
     st.subheader("Intake by Gender (2023)")
-    st.bar_chart(int)
     st.write(intake_gender_2023)
+    fig = go.Figure()
+
+# Add Male bars
+    fig.add_trace(go.Bar(
+        x=intake_gender_2023.index,
+        y=intake_gender_2023['Male Students'],
+        name='Male',
+        marker_color='steelblue'
+    ))
+
+# Add Female bars
+    fig.add_trace(go.Bar(
+        x=intake_gender_2023.index,
+        y=intake_gender_2023['Female Students'],
+        name='Female',
+        marker_color='lightcoral'
+    ))
+
+# Customize layout
+    fig.update_layout(
+        barmode='group',  # Use 'stack' for stacked bars
+        title='2023 Intake by Gender and Program',
+        xaxis_title='Program',
+        yaxis_title='Number of Students',
+        template='plotly_white',
+        height=500
+    )
+
+# Display in Streamlit
+    st.plotly_chart(fig, use_container_width=True)
 
 elif selected_table == "Table 3: Completion Rate (2022)":
     st.subheader("Completion Rate (2022)")
