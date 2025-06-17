@@ -70,8 +70,8 @@ completion_rate_2023 = completion_rate_2023.iloc[:4,]
 overall_graduands_2025 = df5
 overall_graduands_2025 = overall_graduands_2025.iloc[:4, :]
 
-# grads_2025_gender = df6
-# grads_2025_gender = grads_2025_gender.iloc[:4, :3]
+grads_2025_gender = df6
+grads_2025_gender = grads_2025_gender.iloc[:4, :3]
 
 msc_dsa_grad_list = df7
 msc_dsa_grad_list = msc_dsa_grad_list.loc[:, ~msc_dsa_grad_list.columns.duplicated()]
