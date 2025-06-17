@@ -2,13 +2,18 @@ import streamlit as st
 import docx
 import pandas as pd
 import numpy as np
+import requests
+from io import BytesIO
 
 st.set_page_config(page_title="MSC DSA Graduation Visualization", layout="wide")
 
 #Loading the Word document
 @st.cache_data()
 def load_data():
-    return docx.Document("/Users/clementngatia/Downloads/1. Statistical Analysis/SIMS Masters Graduation Report_Class of 2025_Draft 1 (2).docx") 
+    url = "https://github.com/gathukalinet/msc_dsa/raw/main/SIMS%20Masters%20Graduation%20Report_Class%20of%202025_Draft%201%20(2).docx"
+    response = requests.get(url)
+    response.raise_for_status()  # Ensures the download succeeded
+    return docx.Document(BytesIO(response.content))
 
 doc = load_data()
 # Getting all tables
