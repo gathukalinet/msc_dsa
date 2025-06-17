@@ -41,12 +41,18 @@ for i in range(1, 12):
 
 # Renaming all the dataframes for clarity
 total_graduands = df1
-total_graduands = total_graduands.iloc[:10, :10]
+total_graduands = total_graduands.iloc[:9, :9]
 total_graduands = total_graduands.loc[:, ~total_graduands.columns.duplicated()]
+total_graduands = total_graduands.set_index('Class')
+total_graduands.drop(columns=['Total'], inplace=True)
+total_graduands = total_graduands.replace('-', 0)
+total_graduands.iloc[:, 1:] = total_graduands.iloc[:, 1:].apply(pd.to_numeric)
+total_graduands
 
 intake_gender_2023 = df2
 intake_gender_2023 = intake_gender_2023.iloc[:4, :3]
 intake_gender_2023 = intake_gender_2023.loc[:, ~intake_gender_2023.columns.duplicated()]
+intake_gender_2023 = intake_gender_2023.set_index('Program')
 
 completion_rate_2022 = df3
 completion_rate_2022 = completion_rate_2022.iloc[:4,]
@@ -93,7 +99,7 @@ backlog_2023 = backlog_2023.loc[:, ~backlog_2023.columns.duplicated()]
 
 
 # Sidebar for table selection
-st.sidebar.title("Select Table to Visualize")
+st.sidebar.title("Choose Table to Visualize")
 table_options = [
     "Table 1: Total Graduands",
     "Table 2: Intake by Gender (2023)",
@@ -108,12 +114,22 @@ table_options = [
     "Table 11: MSC DSA Backlog (2023)"]
 selected_table = st.sidebar.selectbox("Choose a table to visualize:", table_options)
 
+
+
 # Visualization based on selected table
 if selected_table == "Table 1: Total Graduands":
     st.subheader("Total Graduands")
-    st.write(total_graduands)
+    
+    total_graduands = total_graduands.set_index('Class')
+    total_graduands.drop(columns=['Total'], inplace=True)
+    
+    st.write("This table shows the total number of graduands for each program in the MSC")
+    # Visualization of total graduands
+    st.line_chart(total_graduands, use_container_width=True)
+
 elif selected_table == "Table 2: Intake by Gender (2023)":
     st.subheader("Intake by Gender (2023)")
+    st.bar_chart(int)
     st.write(intake_gender_2023)
 elif selected_table == "Table 3: Completion Rate (2022)":
     st.subheader("Completion Rate (2022)")
@@ -145,3 +161,11 @@ elif selected_table == "Table 11: MSC DSA Backlog (2023)":
 else:
     st.subheader("No data available for this table.")
     st.write("Please select a valid table from the sidebar.")
+
+
+st.sidebar.title("Select Msc Program")
+msc_programs = [
+    'MSc. Mathematical Finance & Risk Analytics'
+    'MSc. Statistical Science',
+    'MSc. Data Science and Analytics',
+    'MSc. Biomathematics']
