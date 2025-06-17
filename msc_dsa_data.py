@@ -121,39 +121,39 @@ selected_table = st.sidebar.selectbox("Choose a table to visualize:", table_opti
 if selected_table == "Table 1: Total Graduands":
     st.header("Total Graduands")
     st.write("This table shows the total number of graduands for each program in the MSC")
+    st.write(total_graduands)
+    
     # Visualization of total graduands
-    st.subheader("Line Plot")
+    st.subheader("Line Plot of Graduation Trends by MSc Program (2017–2025)")
 
-fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(12, 6))
 
-fig = go.Figure()
+    fig = go.Figure()
 
-for col in total_graduands.columns:
-    fig.add_trace(go.Scatter(
-        x=total_graduands.index,
-        y=total_graduands[col],
-        mode='lines+markers',
-        name=col
-    ))
+    for col in total_graduands.columns:
+        fig.add_trace(go.Scatter(
+            x=total_graduands.index,
+            y=total_graduands[col],
+            mode='lines+markers',
+            name=col
+        ))
 
-fig.update_layout(
-    title='Enrollment Trends by MSc Program (2017–2025)',
-    xaxis_title='Year',
-    yaxis_title='Number of Students',
-    xaxis=dict(tickmode='linear'),
-    hovermode='x unified',
-    template='plotly_white',
-    height=600
-)
-
+    fig.update_layout(
+        xaxis_title='Year',
+        yaxis_title='Number of Students',
+        xaxis=dict(tickmode='linear'),
+        hovermode='x unified',
+        template='plotly_white',
+        height=600
+    )
 # Display in Streamlit
-st.title("Line Plot of Graduation Trends by MSc Program")
-st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)
 
-if selected_table == "Table 2: Intake by Gender (2023)":
+elif selected_table == "Table 2: Intake by Gender (2023)":
     st.subheader("Intake by Gender (2023)")
     st.bar_chart(int)
     st.write(intake_gender_2023)
+
 elif selected_table == "Table 3: Completion Rate (2022)":
     st.subheader("Completion Rate (2022)")
     st.write(completion_rate_2022)
