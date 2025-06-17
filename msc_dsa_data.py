@@ -6,11 +6,9 @@ import numpy as np
 st.set_page_config(page_title="MSC DSA Graduation Visualization", layout="wide")
 
 #Loading the Word document
-doc = docx.Document("/Users/clementngatia/Downloads/1. Statistical Analysis/SIMS Masters Graduation Report_Class of 2025_Draft 1 (2).docx")
-
 @st.cache_data
 def load_data():
-    return docx.Document("/Users/clementngatia/Downloads/1. Statistical Analysis/SIMS Masters Graduation Report_Class of 2025_Draft 1 (2).docx") 
+    return docx.Document("https://github.com/gathukalinet/msc_dsa/blob/main/SIMS%20Masters%20Graduation%20Report_Class%20of%202025_Draft%201%20(2).docx") 
 
 doc = load_data()
 # Getting all tables
