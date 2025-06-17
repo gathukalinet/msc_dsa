@@ -100,36 +100,36 @@ backlog_2023.set_index('S/No.', inplace=True)
 if selected_table == "Table 1":
     st.subheader("Total Graduands")
     st.write(total_graduands)
-elif selected_table == "Table 2":
-    st.subheader("Intake by gender (2023)")
-    st.write(intake_gender_2023)
-elif selected_table == "Table 3":
-    st.subheader("Completion Rate (2022)")
-    st.write(completion_rate_2022)
-elif selected_table == "Table 4":
-    st.subheader("Completion Rate (2023)")
-    st.write(completion_rate_2023)
-elif selected_table == "Table 5":
-    st.subheader("Overall Graduands (2025)")
-    st.write(overall_graduands_2025)
-elif selected_table == "Table 6":
-    st.subheader("Graduands by gnder (2025)")
-    st.write(grads_2025_gender)
-elif selected_table == "Table 7":
-    st.subheader("MSC DSA Graduation List")
-    st.write(msc_dsa_grad_list)
-elif selected_table == "Table 8":
-    st.subheader("Pending Students (2023)")
-    st.write(pending_students_2023)
-elif selected_table == "Table 9":
-    st.subheader("MSC DSA Pending Current")
-    st.write(msc_dsa_pending_current)
-elif selected_table == "Table 10":
-    st.subheader("MSC DSA Backlog (2024)")
-    st.write(backlog_2024)
-elif selected_table == "Table 11":
-    st.subheader("MSC DSA Backlog (2023)")
-    st.write(backlog_2023)
-else:
-    st.subheader("No data available for this table.")
-    st.write("Please select a valid table from the sidebar.")
+# elif selected_table == "Table 2":
+#     st.subheader("Intake by gender (2023)")
+#     st.write(intake_gender_2023)
+# elif selected_table == "Table 3":
+#     st.subheader("Completion Rate (2022)")
+#     st.write(completion_rate_2022)
+# elif selected_table == "Table 4":
+#     st.subheader("Completion Rate (2023)")
+#     st.write(completion_rate_2023)
+# elif selected_table == "Table 5":
+#     st.subheader("Overall Graduands (2025)")
+#     st.write(overall_graduands_2025)
+# elif selected_table == "Table 6":
+#     st.subheader("Graduands by gnder (2025)")
+#     st.write(grads_2025_gender)
+# elif selected_table == "Table 7":
+#     st.subheader("MSC DSA Graduation List")
+#     st.write(msc_dsa_grad_list)
+# elif selected_table == "Table 8":
+#     st.subheader("Pending Students (2023)")
+#     st.write(pending_students_2023)
+# elif selected_table == "Table 9":
+#     st.subheader("MSC DSA Pending Current")
+#     st.write(msc_dsa_pending_current)
+# elif selected_table == "Table 10":
+#     st.subheader("MSC DSA Backlog (2024)")
+#     st.write(backlog_2024)
+# elif selected_table == "Table 11":
+#     st.subheader("MSC DSA Backlog (2023)")
+#     st.write(backlog_2023)
+# else:
+#     st.subheader("No data available for this table.")
+#     st.write("Please select a valid table from the sidebar.")
