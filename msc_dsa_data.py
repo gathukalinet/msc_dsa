@@ -172,7 +172,7 @@ elif selected_table == "Table 2: Intake by Gender (2023)":
 
 # Customize layout
     fig.update_layout(
-        barmode='group',  # Use 'stack' for stacked bars
+        barmode='stack',  # Use 'stack' for stacked bars
         title='2023 Intake by Gender and Program',
         xaxis_title='Program',
         yaxis_title='Number of Students',
