@@ -9,13 +9,14 @@ st.set_page_config(page_title="MSC DSA Graduation Visualization", layout="wide")
 
 #Loading the Word document
 @st.cache_resource()
-def download_docx():
+def load_docx():
     url = "https://github.com/gathukalinet/msc_dsa/raw/main/SIMS%20Masters%20Graduation%20Report_Class%20of%202025_Draft%201%20(2).docx"
     response = requests.get(url)
-    response.raise_for_status()  # Ensures the download succeeded
-    return docx.Document(BytesIO(response.content))
+    response.raise_for_status()
+    return docx.Document(BytesIO(response.content))  # Load directly here
 
-doc = docx.Document(BytesIO(download_docx()))
+doc = load_docx()
+
 # Getting all tables
 tables = doc.tables
 print(f"Found {len(tables)} tables.")
