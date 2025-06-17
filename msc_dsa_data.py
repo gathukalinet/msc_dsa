@@ -44,7 +44,6 @@ total_graduands = df1
 total_graduands = total_graduands.iloc[:9, :9]
 total_graduands = total_graduands.loc[:, ~total_graduands.columns.duplicated()]
 total_graduands = total_graduands.set_index('Class')
-total_graduands.drop(columns=['Total'], inplace=True)
 total_graduands = total_graduands.replace('-', 0)
 total_graduands.iloc[:, 1:] = total_graduands.iloc[:, 1:].apply(pd.to_numeric)
 total_graduands
