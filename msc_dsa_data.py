@@ -142,6 +142,6 @@ elif selected_table == "Table 10":
 elif selected_table == "Table 11":
     st.subheader("MSC DSA Backlog (2023)")
     st.write(backlog_2023)
-# else:
-#     st.subheader("No data available for this table.")
-#     st.write("Please select a valid table from the sidebar.")
+else:
+    st.subheader("No data available for this table.")
+    st.write("Please select a valid table from the sidebar.")
