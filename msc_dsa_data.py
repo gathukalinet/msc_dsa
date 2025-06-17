@@ -54,6 +54,7 @@ intake_gender_2023 = df2
 intake_gender_2023 = intake_gender_2023.iloc[:4, :3]
 intake_gender_2023 = intake_gender_2023.loc[:, ~intake_gender_2023.columns.duplicated()]
 intake_gender_2023 = intake_gender_2023.set_index('Program')
+intake_gender_2023 = intake_gender_2023.apply(pd.to_numeric, errors='coerce')
 
 completion_rate_2022 = df3
 completion_rate_2022 = completion_rate_2022.iloc[:4,]
