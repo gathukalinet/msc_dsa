@@ -24,13 +24,6 @@ print(f"Found {len(tables)} tables.")
 st.title("MSC DSA Graduation and Backlog Visualization")
 st.write("Welcome! This application visualizes the graduation and backlog data for the MSC DSA program.")
 
-with st.sidebar:
-    st.header("Navigation")
-    st.write(" Choose a table to visualize:")
-
-    table_options = [f"Table {i+1}" for i in range(len(tables))]
-    selected_table = st.selectbox("Select a table:", table_options)
-
 def table_to_df(table):
     data = []
     for row in table.rows:
@@ -45,14 +38,6 @@ for i in range(1, 12):
     df.reset_index(drop=True, inplace=True)
     globals()[f'df{i}'] = df       # Creating. individual dataframes df1, df2, ..., df15
 
-# Changing df9 to have correct headers
-
-
-# Correcting df11 headers
-df11 = df11.loc[:, ~df11.columns.duplicated()]
-df11.loc[-1] = df11.columns           # Add current column names as a new row
-df11.index = df11.index + 1          # Shift all existing rows down
-df11 = df11.sort_index()
 
 # Renaming all the dataframes for clarity
 total_graduands = df1
@@ -106,40 +91,57 @@ backlog_2023 = df11
 backlog_2023 = backlog_2023.loc[:, ~backlog_2023.columns.duplicated()]
 
 
+
+# Sidebar for table selection
+st.sidebar.title("Select Table to Visualize")
+table_options = [
+    "Table 1: Total Graduands",
+    "Table 2: Intake by Gender (2023)",
+    "Table 3: Completion Rate (2022)",
+    "Table 4: Completion Rate (2023)",
+    "Table 5: Overall Graduands (2025)",
+    "Table 6: Graduands by Gender (2025)",
+    "Table 7: MSC DSA Graduation List",
+    "Table 8: Pending Students (2023)",
+    "Table 9: MSC DSA Pending Current",
+    "Table 10: MSC DSA Backlog (2024)",
+    "Table 11: MSC DSA Backlog (2023)"]
+selected_table = st.sidebar.selectbox("Choose a table to visualize:", table_options)
+
 # Visualization based on selected table
 if selected_table == "Table 1":
     st.subheader("Total Graduands")
     st.write(total_graduands)
 elif selected_table == "Table 2":
-    st.subheader("Intake by gender (2023)")
+    st.subheader("Intake by Gender (2023)")
     st.write(intake_gender_2023)
-# elif selected_table == "Table 3":
-#     st.subheader("Completion Rate (2022)")
-#     st.write(completion_rate_2022)
-# elif selected_table == "Table 4":
-#     st.subheader("Completion Rate (2023)")
-#     st.write(completion_rate_2023)
-# elif selected_table == "Table 5":
-#     st.subheader("Overall Graduands (2025)")
-#     st.write(overall_graduands_2025)
-# elif selected_table == "Table 6":
-#     st.subheader("Graduands by gnder (2025)")
-#     st.write(grads_2025_gender)
-# elif selected_table == "Table 7":
-#     st.subheader("MSC DSA Graduation List")
-#     st.write(msc_dsa_grad_list)
-# elif selected_table == "Table 8":
-#     st.subheader("Pending Students (2023)")
-#     st.write(pending_students_2023)
-# elif selected_table == "Table 9":
-#     st.subheader("MSC DSA Pending Current")
-#     st.write(msc_dsa_pending_current)
-# elif selected_table == "Table 10":
-#     st.subheader("MSC DSA Backlog (2024)")
-#     st.write(backlog_2024)
-# elif selected_table == "Table 11":
-#     st.subheader("MSC DSA Backlog (2023)")
-#     st.write(backlog_2023)
+elif selected_table == "Table 3":
+    st.subheader("Completion Rate (2022)")
+    st.write(completion_rate_2022)
+elif selected_table == "Table 4":
+    st.subheader("Completion Rate (2023)")
+    st.write(completion_rate_2023)
+elif selected_table == "Table 5":
+    st.subheader("Overall Graduands (2025)")
+    st.write(overall_graduands_2025)
+elif selected_table == "Table 6":
+    st.subheader("Graduands by Gender (2025)")
+    st.write(grads_2025_gender)
+elif selected_table == "Table 7":
+    st.subheader("MSC DSA Graduation List")
+    st.write(msc_dsa_grad_list)
+elif selected_table == "Table 8":
+    st.subheader("Pending Students (2023)")
+    st.write(pending_students_2023)
+elif selected_table == "Table 9":
+    st.subheader("MSC DSA Pending Current")
+    st.write(msc_dsa_pending_current)
+elif selected_table == "Table 10":
+    st.subheader("MSC DSA Backlog (2024)")
+    st.write(backlog_2024)
+elif selected_table == "Table 11":
+    st.subheader("MSC DSA Backlog (2023)")
+    st.write(backlog_2023)
 # else:
 #     st.subheader("No data available for this table.")
 #     st.write("Please select a valid table from the sidebar.")
