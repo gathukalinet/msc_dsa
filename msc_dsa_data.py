@@ -109,37 +109,37 @@ table_options = [
 selected_table = st.sidebar.selectbox("Choose a table to visualize:", table_options)
 
 # Visualization based on selected table
-if selected_table == "Table 1":
+if selected_table == "Table 1: Total Graduands":
     st.subheader("Total Graduands")
     st.write(total_graduands)
-elif selected_table == "Table 2":
+elif selected_table == "Table 2: Intake by Gender (2023)":
     st.subheader("Intake by Gender (2023)")
     st.write(intake_gender_2023)
-elif selected_table == "Table 3":
+elif selected_table == "Table 3: Completion Rate (2022)":
     st.subheader("Completion Rate (2022)")
     st.write(completion_rate_2022)
-elif selected_table == "Table 4":
+elif selected_table == "Table 4: Completion Rate (2023)":
     st.subheader("Completion Rate (2023)")
     st.write(completion_rate_2023)
-elif selected_table == "Table 5":
+elif selected_table == "Table 5: Overall Graduands (2025)":
     st.subheader("Overall Graduands (2025)")
     st.write(overall_graduands_2025)
-elif selected_table == "Table 6":
+elif selected_table == "Table 6: Graduands by Gender (2025)":
     st.subheader("Graduands by Gender (2025)")
     st.write(grads_2025_gender)
-elif selected_table == "Table 7":
+elif selected_table == "Table 7: MSC DSA Graduation List":
     st.subheader("MSC DSA Graduation List")
     st.write(msc_dsa_grad_list)
-elif selected_table == "Table 8":
+elif selected_table == "Table 8: Pending Students (2023)":
     st.subheader("Pending Students (2023)")
     st.write(pending_students_2023)
-elif selected_table == "Table 9":
+elif selected_table == "Table 9: MSC DSA Pending Current":
     st.subheader("MSC DSA Pending Current")
     st.write(msc_dsa_pending_current)
-elif selected_table == "Table 10":
+elif selected_table == "Table 10: MSC DSA Backlog (2024)":
     st.subheader("MSC DSA Backlog (2024)")
     st.write(backlog_2024)
-elif selected_table == "Table 11":
+elif selected_table == "Table 11: MSC DSA Backlog (2023)":
     st.subheader("MSC DSA Backlog (2023)")
     st.write(backlog_2023)
 else:
