@@ -57,9 +57,11 @@ df11 = df11.sort_index()
 # Renaming all the dataframes for clarity
 total_graduands = df1
 total_graduands = total_graduands.iloc[:10, :10]
+total_graduands = total_graduands.loc[:, ~total_graduands.columns.duplicated()]
 
 intake_gender_2023 = df2
 intake_gender_2023 = intake_gender_2023.iloc[:4, :3]
+intake_gender_2023 = intake_gender_2023.loc[:, ~intake_gender_2023.columns.duplicated()]
 
 completion_rate_2022 = df3
 completion_rate_2022 = completion_rate_2022.iloc[:4,]
