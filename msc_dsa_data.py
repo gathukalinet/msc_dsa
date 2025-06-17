@@ -5,6 +5,7 @@ import numpy as np
 import requests
 from io import BytesIO
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 
 st.set_page_config(page_title="MSC DSA Graduation Visualization", layout="wide")
 
@@ -119,24 +120,35 @@ selected_table = st.sidebar.selectbox("Choose a table to visualize:", table_opti
 # Visualization based on selected table
 if selected_table == "Table 1: Total Graduands":
     st.header("Total Graduands")
-    
     st.write("This table shows the total number of graduands for each program in the MSC")
     # Visualization of total graduands
     st.subheader("Line Plot")
 
 fig, ax = plt.subplots(figsize=(12, 6))
 
-for column in total_graduands.columns:
-    ax.plot(total_graduands.index, total_graduands[column], marker='o', label=column)
+fig = go.Figure()
 
-ax.set_title("Graduands by Class")
-ax.set_xlabel("Year")
-ax.set_ylabel("Number of Students")
-ax.grid(True)
-ax.legend()
-plt.xticks(rotation=45)
+for col in total_graduands.columns:
+    fig.add_trace(go.Scatter(
+        x=total_graduands.index,
+        y=total_graduands[col],
+        mode='lines+markers',
+        name=col
+    ))
 
-st.pyplot(fig)
+fig.update_layout(
+    title='Enrollment Trends by MSc Program (2017–2025)',
+    xaxis_title='Year',
+    yaxis_title='Number of Students',
+    xaxis=dict(tickmode='linear'),
+    hovermode='x unified',
+    template='plotly_white',
+    height=600
+)
+
+# Display in Streamlit
+st.title("Line Plot of Graduation Trends by MSc Program")
+st.plotly_chart(fig, use_container_width=True)
 
 if selected_table == "Table 2: Intake by Gender (2023)":
     st.subheader("Intake by Gender (2023)")
