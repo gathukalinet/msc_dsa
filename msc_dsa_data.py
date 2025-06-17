@@ -94,7 +94,7 @@ df11.loc[-1] = df11.columns           # Add current column names as a new row
 df11.index = df11.index + 1          # Shift all existing rows down
 df11 = df11.sort_index()
 backlog_2023 = df11
-backlog_2023.set_index('S/No.', inplace=True)
+
 
 # Visualization based on selected table
 if selected_table == "Table 1":
